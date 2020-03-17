@@ -1,16 +1,27 @@
 import React from 'react';
 import { MainContainer } from './styled/containers';
 import Header from './header';
+import { MainContent, FooterContent, HeaderContent } from './styled/containers';
+import SidePanel from './lateral-panel';
+import FormsPanel from './form-panel';
+import FooterPanel from './footer-panel';
 
 
-const App = () => {
+export default () => {
   return (
     <MainContainer>
-      <Header />
-      <h1>Heelo dashboard</h1>
+      <HeaderContent>
+        <Header />
+      </HeaderContent>
+      <MainContent>
+        <SidePanel />
+        <FormsPanel />
+      </MainContent>
+      <FooterContent>
+        <FooterPanel />
+      </FooterContent>
     </MainContainer>
   );
 }
 
 
-export default App;
