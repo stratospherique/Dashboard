@@ -44,6 +44,19 @@ const Tabs = styled.article`
 const TabSwitcher = styled.div`
   height: 4rem;
   width: 100%;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+
+  & > span {
+    width: 50%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    border: 1px solid red;
+  }
 `;
 
 export { Logo, RightNav, Tabs, TabSwitcher };

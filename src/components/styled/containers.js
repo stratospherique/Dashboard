@@ -13,18 +13,26 @@ const MainContainer = styled.div`
 
 const MainContent = styled.main`
   grid-area: main;
-  display: grid;
-  grid-template-areas: "left" "right";
-  grid-template-columns: 35% 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  align-items: center;
   height: 100%;
 
   aside {
-    grid-area: left;
+    width: 25%;
   }
 
-  `;
+`;
 
+const TabsContainer = styled.section`
+  width: 50%;
+  height: 80%;
+  border: 1px solid;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 const FooterContent = styled.footer`
   grid-area: footer;
@@ -43,9 +51,5 @@ const HeaderContent = styled.header`
   }
 `;
 
-const TabsContainer = styled.section`
-  display: grid;
-  place-content: center;
-`;
 
 export { MainContainer, MainContent, FooterContent, HeaderContent, TabsContainer };

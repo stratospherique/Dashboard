@@ -1,28 +1,25 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import AjaxCalls from '../fakeApi/calls';
 import { TabsContainer } from './styled/containers';
-import { Tabs, TabSwitcher } from './styled/styledParts';
+import FormTab from './formTab';
+import { TabSwitcher } from './styled/styledParts';
+import { selectedTabReducer, SWITCH_TABS } from './reducers/tab-reducer';
 
 export default () => {
+  const [selectedTab, dispatch] = useReducer(selectedTabReducer, 0)
+  const handleClick = (index) => {
+    dispatch({
+      type: SWITCH_TABS,
+      index
+    })
+  }
   return (
     <TabsContainer>
       <TabSwitcher>
-        <span>Main Information</span>
-        <span>Additional Information</span>
+        <span onClick={handleClick.bind(this, 0)} style={selectedTab == 0 ? { backgroundColor: 'yellow' } : null}>Main Information</span>
+        <span onClick={handleClick.bind(this, 1)} style={selectedTab == 1 ? { backgroundColor: 'yellow' } : null}>Additional Information</span>
       </TabSwitcher>
-      <Tabs>
-        <form method="post" name="basic-data">
-          <input type="email" />
-        </form>
-      </Tabs>
-      <Tabs>
-        <form method="post" name="Address">
-          <select name="Address[country]" id="country">
-            <option value="Germany">Germany</option>
-            <option value="France">France</option>
-          </select>
-        </form>
-      </Tabs>
+      <FormTab selectedTab={selectedTab} />
     </TabsContainer>
   )
 }
