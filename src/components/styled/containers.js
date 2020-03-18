@@ -5,15 +5,26 @@ const MainContainer = styled.div`
   width: 100vw;
   display: grid;
   grid-template-rows: 10% 1fr 5%;
-  grid-template-columns: 30% 1fr;
-  grid-template-areas: "header header"
-                  "main main"
-                  "footer footer";
+  grid-template-columns: 1fr;
+  grid-template-areas: "header"
+                  "main"
+                  "footer";
 `;
 
 const MainContent = styled.main`
   grid-area: main;
-`;
+  display: grid;
+  grid-template-areas: "left" "right";
+  grid-template-columns: 35% 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+
+  aside {
+    grid-area: left;
+  }
+
+  `;
+
 
 const FooterContent = styled.footer`
   grid-area: footer;
@@ -21,6 +32,20 @@ const FooterContent = styled.footer`
 
 const HeaderContent = styled.header`
   grid-area: header;
+  border: 1px solid;
+
+  header {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
 `;
 
-export { MainContainer, MainContent, FooterContent, HeaderContent };
+const TabsContainer = styled.section`
+  display: grid;
+  place-content: center;
+`;
+
+export { MainContainer, MainContent, FooterContent, HeaderContent, TabsContainer };

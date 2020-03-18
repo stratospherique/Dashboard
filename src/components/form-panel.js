@@ -1,23 +1,28 @@
 import React from 'react';
 import AjaxCalls from '../fakeApi/calls';
+import { TabsContainer } from './styled/containers';
+import { Tabs, TabSwitcher } from './styled/styledParts';
 
 export default () => {
-  console.log(AjaxCalls.checkEmailFormat('alexq@qsd.com'))
   return (
-    <section>
-      <div id="tab-1">
+    <TabsContainer>
+      <TabSwitcher>
+        <span>Main Information</span>
+        <span>Additional Information</span>
+      </TabSwitcher>
+      <Tabs>
         <form method="post" name="basic-data">
           <input type="email" />
         </form>
-      </div>
-      <div id="tab-2">
-        <form method="post" name="Adress">
-          <select name="Adress[country]" id="country">
+      </Tabs>
+      <Tabs>
+        <form method="post" name="Address">
+          <select name="Address[country]" id="country">
             <option value="Germany">Germany</option>
             <option value="France">France</option>
           </select>
         </form>
-      </div>
-    </section>
+      </Tabs>
+    </TabsContainer>
   )
 }
