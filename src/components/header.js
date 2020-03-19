@@ -9,7 +9,8 @@ export default ({ target }) => {
     <header>
       <Logo />
       {target === 'tablet' ? <SidePanel /> : null}
-      <RightNav />
+      <RightNav target={target} />
+      <input type="checkbox" id="toggler" />
       {target === 'mobile' ? <SidePanel /> : null}
     </header>
   )

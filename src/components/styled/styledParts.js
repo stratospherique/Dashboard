@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import image from '../../assets/img/logo.png';
-import { faEnvelope, faGlobeAmericas, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faGlobeAmericas, faBell, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Logo = styled.div`
   width: 8rem;
@@ -18,22 +18,38 @@ ${props => props.source ? `
 
 `;
 
-const NotifContent = ({ className, children }) => (
+const NotifContent = ({ className, children, target }) => (
   <div className={className}>
-    <div>
-      <FontAwesomeIcon icon={faGlobeAmericas} /> <span>EN</span>
-    </div>
-    <FontAwesomeIcon icon={faEnvelope} />
-    <FontAwesomeIcon icon={faBell} />
+    {target != "mobile" ? (<>
+      <div>
+        <FontAwesomeIcon icon={faGlobeAmericas} /> <span>EN</span>
+      </div>
+      <FontAwesomeIcon icon={faEnvelope} />
+      <FontAwesomeIcon icon={faBell} />
+    </>) : (<>
+      <div>
+        <FontAwesomeIcon icon={faGlobeAmericas} /> <span>EN</span>
+      </div>
+      <FontAwesomeIcon icon={faEnvelope} />
+      <FontAwesomeIcon icon={faBell} />
+      <label htmlFor="toggler" className="toggler">
+        <FontAwesomeIcon icon={faBars} />
+      </label>
+    </>)
+    }
   </div>
 )
 
 const RightNav = styled(NotifContent)`
-  width: 6rem;
+  width: 8rem;
   heigth: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .toggler {
+    margin-left: 1rem;
+  }
 `;
 
 const Tabs = styled.article`
@@ -69,7 +85,8 @@ const MovingNav = styled.nav`
     top: 100%;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 0;
+    overflow: hidden;
     flex-direction: column;
     align-items: center;
   }

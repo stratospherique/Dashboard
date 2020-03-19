@@ -9,6 +9,12 @@ const MainContainer = styled.div`
   grid-template-areas: "header"
                   "main"
                   "footer";
+  @media screen and (min-width: 750px) {
+    min-height: 600px;
+  }
+  @media screen and (max-width: 750px) {
+    min-height: 1000px;
+  }
 `;
 
 const MainContent = styled.main`
@@ -53,6 +59,14 @@ const HeaderContent = styled.div`
     align-items: center;
     padding: 0 1rem;
     position: relative;
+
+    & > input {
+      display: none;
+    }
+
+    #toggler:checked ~ nav {
+      height: auto;
+    }
   }
 `;
 
