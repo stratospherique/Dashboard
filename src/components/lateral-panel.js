@@ -1,14 +1,13 @@
 import React from 'react';
+import { MovingNav } from './styled/styledParts';
 
 export default () => (
-  <aside>
-    <nav>
-      <a href="#">Link</a>
-      <a href="#">Link</a>
-      <a href="#">Link</a>
-      <a href="#">Link</a>
-      <a href="#">Link</a>
-      <a href="#">Link</a>
-    </nav>
-  </aside>
+  <MovingNav>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+  </MovingNav>
 )

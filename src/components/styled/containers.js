@@ -19,8 +19,12 @@ const MainContent = styled.main`
 
   aside {
     width: 25%;
+    height: 80%;
   }
 
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 const TabsContainer = styled.section`
@@ -38,7 +42,7 @@ const FooterContent = styled.footer`
   grid-area: footer;
 `;
 
-const HeaderContent = styled.header`
+const HeaderContent = styled.div`
   grid-area: header;
   border: 1px solid;
 
@@ -48,6 +52,7 @@ const HeaderContent = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    position: relative;
   }
 `;
 

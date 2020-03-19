@@ -7,7 +7,6 @@ import { faEnvelope, faGlobeAmericas, faBell } from '@fortawesome/free-solid-svg
 const Logo = styled.div`
   width: 8rem;
   height: 4rem;
-  position: relative;
   border: 1px solid;
 ${props => props.source ? `
   background-image: url(${props.source});
@@ -59,4 +58,28 @@ const TabSwitcher = styled.div`
   }
 `;
 
-export { Logo, RightNav, Tabs, TabSwitcher };
+const MovingNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid;
+  @media screen and (max-width: 750px) {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 751px) {
+    width: 50%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+export { Logo, RightNav, Tabs, TabSwitcher, MovingNav };
