@@ -40,6 +40,21 @@ const NotifContent = ({ className, children, target }) => (
   </div>
 )
 
+const PwdIndicator = ({ level }) => (
+  <div>
+    {level ? level : 0}
+  </div>
+)
+
+const PasswordIndicator = styled(PwdIndicator)`
+  border: 1px solid;
+`;
+
+
+const CusInput = styled.div`
+  border: 1px solid;
+`;
+
 const RightNav = styled(NotifContent)`
   width: 8rem;
   heigth: 4rem;
@@ -99,4 +114,4 @@ const MovingNav = styled.nav`
   }
 `;
 
-export { Logo, RightNav, Tabs, TabSwitcher, MovingNav };
+export { Logo, RightNav, Tabs, TabSwitcher, MovingNav, CusInput, PasswordIndicator };
