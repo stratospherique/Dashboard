@@ -53,6 +53,21 @@ const PasswordIndicator = styled(PwdIndicator)`
 
 const CusInput = styled.div`
   border: 1px solid;
+
+  .input {
+
+    .wrong {
+      border: 4px solid red;
+    }
+  }
+
+  .errors {
+    display: none;
+  }
+
+  .show {
+    display: flex;
+  }
 `;
 
 const RightNav = styled(NotifContent)`
