@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { DISPLAY_MESSAGE, ERASE_MESSAGE } from './reducers/message-reducer';
 import AjaxCalls from '../fakeApi/calls';
 import { Tabs, CusInput, PasswordIndicator } from './styled/styledParts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faExclamationTriangle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-const BasicTab = () => {
+const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
   const [mailState, setMailState] = useState({
     input: '',
     valid: false,
@@ -46,6 +48,8 @@ const BasicTab = () => {
       AjaxCalls.checkPasswordConfirmation.bind(this, pwdState.input)]
     }
   }
+
+
 
 
   const [errors, setErrors] = useState({});
@@ -90,8 +94,27 @@ const BasicTab = () => {
     return mailState.valid && pwdState.valid && pwdConState.valid;
   }
 
+  const formReset = () => {
+    Object.keys(formDispatcher).forEach((key) => {
+      const [state, setState] = formDispatcher[key].state;
+      setState({
+        input: '',
+        valid: false,
+        touched: false,
+        symIndex: 0,
+        indicator: null
+      })
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formValid()) {
+      formReset();
+      e.target.reset();
+      displayMessage();
+    } else displayFailure();
+    setTimeout(fadeMessage, 4000);
   }
 
   return (<Tabs>
@@ -123,7 +146,7 @@ const BasicTab = () => {
                 className={pwdState.touched && !pwdState.valid ? 'wrong' : null} />
               {pwdState.touched && <FontAwesomeIcon icon={symbols[pwdState.symIndex]} />}
             </div>
-            {pwdState.indicator ? <PasswordIndicator level={pwdState.indicator} /> : null}
+            {pwdState.touched ? <PasswordIndicator level={pwdState.indicator} /> : null}
             <div className={pwdState.touched && !pwdState.valid ? 'errors show' : 'errors'}>
               <ul>
                 {errors['password'] && errors['password'].map((e, ind) => <li keys={`${e}-${ind}`}>{e}</li>)}
@@ -148,13 +171,35 @@ const BasicTab = () => {
           </CusInput>
         </li>
         <li>
-          <button type="submit" disabled={!formValid()}>
+          <button type="submit">
             Submit Changes
               </button>
         </li>
       </ul>
     </form>
-  </Tabs >)
+  </Tabs>)
 }
 
-export default BasicTab;
+const mapDispatchToProps = (dispatch) => ({
+  displayMessage: () => {
+    dispatch({
+      type: DISPLAY_MESSAGE,
+      message: 'Basic Info successfully Updated',
+      messageType: 'success'
+    })
+  },
+  fadeMessage: () => {
+    dispatch({
+      type: ERASE_MESSAGE,
+    })
+  },
+  displayFailure: () => {
+    dispatch({
+      type: DISPLAY_MESSAGE,
+      message: 'Oops! Something is wrong with the submitted info',
+      messageType: 'error'
+    })
+  }
+});
+
+export default connect(null, mapDispatchToProps)(BasicTab);

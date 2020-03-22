@@ -40,14 +40,35 @@ const NotifContent = ({ className, children, target }) => (
   </div>
 )
 
-const PwdIndicator = ({ level }) => (
-  <div>
-    {level ? level : 0}
+const PwdIndicator = ({ className, children, level }) => (
+  <div className={className}>
+    <span className={level >= 1 ? 'active' : null}></span>
+    <span className={level >= 2 ? 'active' : null}></span>
+    <span className={level >= 3 ? 'active' : null}></span>
+    <span className={level >= 4 ? 'active' : null}></span>
   </div>
 )
 
 const PasswordIndicator = styled(PwdIndicator)`
   border: 1px solid;
+  width: 6rem;
+  height: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: .4rem;
+  
+  & > span {
+    display: inline-block;
+    border: 4px solid gray;
+    width: 20%;
+    height: 0px;
+    border-radius: .4rem;
+  }
+
+  .active {
+    border-color: ${props => props.level <= 2 ? 'red' : props.level == 4 ? 'green' : 'orange'};
+  }
 `;
 
 
