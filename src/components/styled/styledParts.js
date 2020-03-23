@@ -52,6 +52,8 @@ const PwdIndicator = ({ className, children, level }) => (
 const PasswordIndicator = styled(PwdIndicator)`
   border: 1px solid;
   width: 6rem;
+  margin-top: .2rem;
+  margin-left: calc(100% - 12.5rem);
   height: .8rem;
   display: flex;
   align-items: center;
@@ -73,21 +75,101 @@ const PasswordIndicator = styled(PwdIndicator)`
 
 
 const CusInput = styled.div`
+  padding: .2rem;
   border: 1px solid;
 
   .input {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+
+    input,
+    select,
+    textarea {
+      width: 45%;
+      @media screen and (max-width: 550px) {
+        width: 97%;
+      }
+    }
+
+    label {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @media screen and (max-width: 550px) {
+        display: none;
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
 
     .wrong {
-      border: 4px solid red;
+      -webkit-box-shadow: 0px 0px 5px 3px rgba(230,49,94,1);
+      -moz-box-shadow: 0px 0px 5px 3px rgba(230,49,94,1);
+      box-shadow: 0px 0px 5px 3px rgba(230,49,94,1);
+    }
+
+    .correct {
+      -webkit-box-shadow: 0px 0px 5px 3px rgba(93,189,112,1);
+      -moz-box-shadow: 0px 0px 5px 3px rgba(93,189,112,1);
+      box-shadow: 0px 0px 5px 3px rgba(93,189,112,1);
+    }
+
+    svg {
+      position: absolute;
+      right: 1%;
+      top: 20%;
+
+    }
+    .pass {
+      color: green;
+    }
+    .fail {
+      color: red;
     }
   }
 
   .errors {
-    display: none;
+    padding: .3rem;
+    & > ul {
+      height: 3rem; 
+      width: 12rem;
+      border: 1px solid red;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: .2rem;
+      margin-left: calc(100% - 14rem);
+
+      @media screen and (max-width: 550px) {
+        margin: 0 auto;
+      }
+
+      li {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        font-size: .7em;
+
+        &::before {
+          content: '*';
+          display: inline-block;
+          color: red;
+        }
+      }
+    }
+
+    transition: opacity .5s ease; 
+    opacity: 0;
   }
 
   .show {
-    display: flex;
+    opacity: 1;
   }
 `;
 
@@ -104,7 +186,20 @@ const RightNav = styled(NotifContent)`
 `;
 
 const Tabs = styled.article`
-  height: 100;
+  height: auto;
+  border: 1px solid;
+  margin-top: 6rem;
+  width: 80%;
+  
+  & > h1 {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  li {
+    margin: .5rem 0;
+  }
+  
 `;
 
 const TabSwitcher = styled.div`

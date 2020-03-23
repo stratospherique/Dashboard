@@ -41,7 +41,15 @@ const AjaxCalls = (() => {
   const checkInputPresence = (input) => {
     const res = input && input.length > 0
     return {
-      response: res ? "" : "can't be blank",
+      response: res ? null : "can't be blank",
+      valid: res
+    }
+  }
+
+  const checkSelected = (input) => {
+    const res = !!input
+    return {
+      response: res ? null : "Please choose from the list",
       valid: res
     }
   }
@@ -51,7 +59,8 @@ const AjaxCalls = (() => {
     checkPassword,
     checkPasswordConfirmation,
     checkPasswordStrength,
-    checkInputPresence
+    checkInputPresence,
+    checkSelected
   }
 })();
 

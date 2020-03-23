@@ -2,7 +2,6 @@ import React, { useReducer } from 'react';
 import { connect } from 'react-redux';
 
 const Banner = ({ state }) => {
-  console.log(state)
   return (
     <div className="message">
       {state.type ? <span className={state.type}>{state.message}</span> : null}

@@ -94,10 +94,15 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
     return mailState.valid && pwdState.valid && pwdConState.valid;
   }
 
+  const formTouched = () => {
+    return mailState.touched && pwdState.touched && pwdConState.touched;
+  }
+
   const formReset = () => {
     Object.keys(formDispatcher).forEach((key) => {
       const [state, setState] = formDispatcher[key].state;
       setState({
+        state,
         input: '',
         valid: false,
         touched: false,
@@ -124,15 +129,16 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
         <li>
           <CusInput>
             <div className="input">
-              <label htmlFor="mail">Email</label>
+              <label htmlFor="mail">Email:</label>
               <input type="email" name="mail" id="mail" onChange={handleChange}
                 onBlur={validateInput.bind(this, 'mail')}
-                className={mailState.touched && !mailState.valid ? 'wrong' : null} />
-              {mailState.touched && <FontAwesomeIcon icon={symbols[mailState.symIndex]} />}
+                className={mailState.touched ? (!mailState.valid ? 'wrong' : 'correct') : null} />
+              {mailState.touched && <FontAwesomeIcon icon={symbols[mailState.symIndex]}
+                className={mailState.valid ? 'pass' : 'fail'} />}
             </div>
             <div className={mailState.touched && !mailState.valid ? 'errors show' : 'errors'}>
               <ul>
-                {errors['mail'] && errors['mail'].map((e, ind) => <li keys={`${e}-${ind}`}>{e}</li>)}
+                {errors['mail'] && errors['mail'].map((e, ind) => (e ? (<li keys={`${e}-${ind}`}>{e}</li>) : null))}
               </ul>
             </div>
           </CusInput>
@@ -140,16 +146,17 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
         <li>
           <CusInput>
             <div className="input">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password:</label>
               <input type="password" name="password" id="password" onChange={handleChange}
                 onBlur={validateInput.bind(this, 'password')}
-                className={pwdState.touched && !pwdState.valid ? 'wrong' : null} />
-              {pwdState.touched && <FontAwesomeIcon icon={symbols[pwdState.symIndex]} />}
+                className={pwdState.touched ? (!pwdState.valid ? 'wrong' : 'correct') : null} />
+              {pwdState.touched && <FontAwesomeIcon icon={symbols[pwdState.symIndex]}
+                className={pwdState.valid ? 'pass' : 'fail'} />}
             </div>
-            {pwdState.touched ? <PasswordIndicator level={pwdState.indicator} /> : null}
+            {pwdState.touched ? <PasswordIndicator level={pwdState.indicator} className="indicator" /> : null}
             <div className={pwdState.touched && !pwdState.valid ? 'errors show' : 'errors'}>
               <ul>
-                {errors['password'] && errors['password'].map((e, ind) => <li keys={`${e}-${ind}`}>{e}</li>)}
+                {errors['password'] && errors['password'].map((e, ind) => (e ? (<li keys={`${e}-${ind}`}>{e}</li>) : null))}
               </ul>
             </div>
           </CusInput>
@@ -157,21 +164,22 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
         <li>
           <CusInput>
             <div className="input">
-              <label htmlFor="password-r">Password Confirmation</label>
+              <label htmlFor="password-r">Password Confirmation:</label>
               <input type="password" name="passwordConfirmation" id="password-r"
                 onChange={handleChange} onBlur={validateInput.bind(this, 'passwordConfirmation')}
-                className={pwdConState.touched && !pwdConState.valid ? 'wrong' : null} />
+                className={pwdConState.touched ? (!pwdConState.valid ? 'wrong' : 'correct') : null} />
+              {pwdConState.touched && <FontAwesomeIcon icon={symbols[pwdConState.symIndex]}
+                className={pwdConState.valid ? 'pass' : 'fail'} />}
             </div>
-            {pwdConState.touched && <FontAwesomeIcon icon={symbols[pwdConState.symIndex]} />}
             <div className={pwdConState.touched && !pwdConState.valid ? 'errors show' : 'errors'}>
               <ul>
-                {errors['passwordConfirmation'] && errors['passwordConfirmation'].map((e, ind) => <li keys={`${e}-${ind}`}>{e}</li>)}
+                {errors['passwordConfirmation'] && errors['passwordConfirmation'].map((e, ind) => (e ? (<li keys={`${e}-${ind}`}>{e}</li>) : null))}
               </ul>
             </div>
           </CusInput>
         </li>
         <li>
-          <button type="submit">
+          <button type="submit" disabled={!formTouched()}>
             Submit Changes
               </button>
         </li>

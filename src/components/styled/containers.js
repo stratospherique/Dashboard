@@ -1,20 +1,16 @@
 import styled from 'styled-components';
 
 const MainContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-rows: 10% 1fr 5%;
+  grid-template-rows: 4rem 1fr 2rem;
   grid-template-columns: 1fr;
   grid-template-areas: "header"
                   "main"
                   "footer";
-  @media screen and (min-width: 750px) {
-    min-height: 600px;
-  }
-  @media screen and (max-width: 750px) {
-    min-height: 1000px;
-  }
+  min-height: 1000px;
+  
 `;
 
 const MainContent = styled.main`
@@ -25,7 +21,7 @@ const MainContent = styled.main`
 
   aside {
     width: 25%;
-    height: 80%;
+    height: 70%;
   }
 
   @media screen and (max-width: 1024px) {
@@ -35,13 +31,19 @@ const MainContent = styled.main`
 
 const TabsContainer = styled.section`
   width: 50%;
-  height: 80%;
+  @media screen and (max-width: 1024px) and (min-width: 751px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 100%;
+  }
+  height: 70%;
   border: 1px solid;
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
 `;
 
 const FooterContent = styled.footer`
