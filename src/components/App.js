@@ -45,7 +45,7 @@ const App = ({ displayMessage, fadeMessage }) => {
         <Header target={state} />
       </HeaderContent>
       <MainContent>
-        {state === 'web' ? <aside><SidePanel /></aside> : null}
+        {state === 'web' ? <aside><SidePanel device={state} /></aside> : null}
         <FormsPanel />
       </MainContent>
       <FooterContent>

@@ -48,6 +48,12 @@ const TabsContainer = styled.section`
 
 const FooterContent = styled.footer`
   grid-area: footer;
+  
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -67,7 +73,7 @@ const HeaderContent = styled.div`
     }
 
     #toggler:checked ~ nav {
-      height: auto;
+      height: 10rem;
     }
   }
 `;

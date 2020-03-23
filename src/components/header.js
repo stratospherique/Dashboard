@@ -8,10 +8,10 @@ export default ({ target }) => {
   return (
     <header>
       <Logo />
-      {target === 'tablet' ? <SidePanel /> : null}
+      {target === 'tablet' ? <SidePanel device={target} /> : null}
       <RightNav target={target} />
       <input type="checkbox" id="toggler" />
-      {target === 'mobile' ? <SidePanel /> : null}
+      {target === 'mobile' ? <SidePanel device={target} /> : null}
     </header>
   )
 }

@@ -6,7 +6,7 @@ import { faEnvelope, faGlobeAmericas, faBell, faBars } from '@fortawesome/free-s
 
 const Logo = styled.div`
   width: 8rem;
-  height: 4rem;
+  height: 80%;
   border: 1px solid;
 ${props => props.source ? `
   background-image: url(${props.source});
@@ -40,6 +40,22 @@ const NotifContent = ({ className, children, target }) => (
   </div>
 )
 
+const RightNav = styled(NotifContent)`
+    width: 8rem;
+    heigth: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .toggler {
+      margin-left: 1rem;
+    }
+
+    svg {
+      cursor: pointer;
+      color: brown;
+    }
+  `;
 const PwdIndicator = ({ className, children, level }) => (
   <div className={className}>
     <span className={level >= 1 ? 'active' : null}></span>
@@ -173,17 +189,6 @@ const CusInput = styled.div`
   }
 `;
 
-const RightNav = styled(NotifContent)`
-  width: 8rem;
-  heigth: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .toggler {
-    margin-left: 1rem;
-  }
-`;
 
 const Tabs = styled.article`
   height: auto;
@@ -225,6 +230,26 @@ const MovingNav = styled.nav`
   flex-direction: column;
   height: 100%;
   border: 1px solid;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > div {
+    width: 60%;
+    margin: 7% 0;
+
+    & > a {
+      text-decoration: none;
+      font-size: .8em;
+      margin-left: .3rem;
+      color: red;
+
+      & > svg {
+        color: gray;
+        margin-right: .3rem;
+      }
+    }
+  }
+
   @media screen and (max-width: 750px) {
     position: absolute;
     z-index: 100;
@@ -233,15 +258,49 @@ const MovingNav = styled.nav`
     width: 100%;
     height: 0;
     overflow: hidden;
-    flex-direction: column;
-    align-items: center;
+
+    transition: height 0.5s ease;
+
+    & > div {
+      width: 100%;
+      margin: 0;
+      height: calc(100% / 6);
+      padding: 0;      
+      &:hover,
+      &:active {
+        background-color: blue;
+      }
+      
+      & > a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+
+        
+
+      }
+     
+
+      
+    }
   }
 
   @media screen and (max-width: 1024px) and (min-width: 751px) {
-    width: 50%;
-    height: auto;
+    width: 60%;
+    height: 100%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: stretch;
+
+    & > div {
+      width: auto;
+      border: 1px solid;
+      padding: .5rem;
+
+      & > a {
+        margin-left: 0;
+        color: magenta;
+      }
+    }
   }
 `;
 
