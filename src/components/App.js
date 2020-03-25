@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayMessage: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Welcome :)',
+      message: 'Welcome ☺',
       messageType: 'welcome'
     })
   },

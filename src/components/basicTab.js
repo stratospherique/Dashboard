@@ -132,7 +132,7 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
               <label htmlFor="mail">Email:</label>
               <input type="email" name="mail" id="mail" onChange={handleChange}
                 onBlur={validateInput.bind(this, 'mail')}
-                className={mailState.touched ? (!mailState.valid ? 'wrong' : 'correct') : null} />
+                className={mailState.touched ? (!mailState.valid ? 'wrong' : 'correct') : null} placeholder="Type in Your Email" />
               {mailState.touched && <FontAwesomeIcon icon={symbols[mailState.symIndex]}
                 className={mailState.valid ? 'pass' : 'fail'} />}
             </div>
@@ -148,7 +148,7 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
             <div className="input">
               <label htmlFor="password">Password:</label>
               <input type="password" name="password" id="password" onChange={handleChange}
-                onBlur={validateInput.bind(this, 'password')}
+                onBlur={validateInput.bind(this, 'password')} placeholder="Type in a strong password"
                 className={pwdState.touched ? (!pwdState.valid ? 'wrong' : 'correct') : null} />
               {pwdState.touched && <FontAwesomeIcon icon={symbols[pwdState.symIndex]}
                 className={pwdState.valid ? 'pass' : 'fail'} />}
@@ -165,7 +165,7 @@ const BasicTab = ({ displayMessage, fadeMessage, displayFailure }) => {
           <CusInput>
             <div className="input">
               <label htmlFor="password-r">Password Confirmation:</label>
-              <input type="password" name="passwordConfirmation" id="password-r"
+              <input type="password" name="passwordConfirmation" id="password-r" placeholder="Repeat The Typed above password"
                 onChange={handleChange} onBlur={validateInput.bind(this, 'passwordConfirmation')}
                 className={pwdConState.touched ? (!pwdConState.valid ? 'wrong' : 'correct') : null} />
               {pwdConState.touched && <FontAwesomeIcon icon={symbols[pwdConState.symIndex]}
@@ -192,7 +192,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayMessage: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Basic Info successfully Updated',
+      message: 'Basic Info successfully Updated ✅',
       messageType: 'success'
     })
   },
@@ -204,7 +204,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayFailure: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Oops! Something is wrong with the submitted info',
+      message: 'Oops! Something is wrong with the submitted info ✘',
       messageType: 'error'
     })
   }

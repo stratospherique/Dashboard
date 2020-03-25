@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import image from '../../assets/img/logo.png';
 import { faEnvelope, faGlobeAmericas, faBell, faBars } from '@fortawesome/free-solid-svg-icons';
+import colors from './colors';
 
 const Logo = styled.div`
   width: 8rem;
   height: 80%;
-  border: 1px solid;
 ${props => props.source ? `
   background-image: url(${props.source});
   background-size: 100% 100%;
@@ -49,11 +49,28 @@ const RightNav = styled(NotifContent)`
 
     .toggler {
       margin-left: 1rem;
+      
+      & > svg {
+        font-size: 1.5rem;
+        color: ${colors.colorSix};
+        &:hover,
+        &:active {
+          color: ${colors.colorFour};
+        }
+      }
     }
 
     svg {
+      font-size: 1rem;
       cursor: pointer;
-      color: brown;
+      color: ${colors.colorFive};
+    }
+
+    & > div {
+      span {
+        font-size: 1.1em;
+        color: ${colors.colorTwo};
+      }
     }
   `;
 const PwdIndicator = ({ className, children, level }) => (
@@ -68,8 +85,8 @@ const PwdIndicator = ({ className, children, level }) => (
 const PasswordIndicator = styled(PwdIndicator)`
   border: 1px solid;
   width: 6rem;
-  margin-top: .2rem;
-  margin-left: calc(100% - 12.5rem);
+  margin-top: 10px;
+  margin-left: 60%;
   height: .8rem;
   display: flex;
   align-items: center;
@@ -87,12 +104,15 @@ const PasswordIndicator = styled(PwdIndicator)`
   .active {
     border-color: ${props => props.level <= 2 ? 'red' : props.level == 4 ? 'green' : 'orange'};
   }
+
+  @media screen and (max-width: 750px) {
+    margin-left: 10%;
+  }
 `;
 
 
 const CusInput = styled.div`
   padding: .2rem;
-  border: 1px solid;
 
   .input {
     display: flex;
@@ -104,6 +124,14 @@ const CusInput = styled.div`
     select,
     textarea {
       width: 45%;
+      background-color: ${colors.colorFour};
+      padding: .3rem;
+      border: none;
+      border: 1px solid gray;
+      border-radius: 10px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      
       @media screen and (max-width: 550px) {
         width: 97%;
       }
@@ -114,6 +142,7 @@ const CusInput = styled.div`
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      font-family: 'Roboto', sans-serif;
       @media screen and (max-width: 550px) {
         display: none;
       }
@@ -150,27 +179,26 @@ const CusInput = styled.div`
   }
 
   .errors {
-    padding: .3rem;
+    height: 0;
+    overflow: hidden;
     & > ul {
-      height: 3rem; 
       width: 12rem;
-      border: 1px solid red;
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: .2rem;
-      margin-left: calc(100% - 14rem);
+      margin-left: 60%;
+      margin-top: 10px;
 
       @media screen and (max-width: 550px) {
-        margin: 0 auto;
+        margin-left: 10%;
       }
 
       li {
         width: 100%;
         margin: 0;
-        text-align: center;
-        font-size: .7em;
+        text-align: left;
+        font-size: .9em;
 
         &::before {
           content: '*';
@@ -185,6 +213,7 @@ const CusInput = styled.div`
   }
 
   .show {
+    height: auto;
     opacity: 1;
   }
 `;
@@ -192,17 +221,58 @@ const CusInput = styled.div`
 
 const Tabs = styled.article`
   height: auto;
-  border: 1px solid;
   margin-top: 6rem;
   width: 80%;
   
   & > h1 {
     text-align: center;
     margin: 1rem;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Baloo Chettan 2', cursive;
+    color: ${colors.colorTwo};
   }
 
   li {
     margin: .5rem 0;
+  }
+
+  form > ul > li:last-child {
+    display: flex;
+    justify-content: flex-end;
+
+    & button {
+      border: none;
+      padding: 5px;
+      border: 1px double gray;
+      border-radius: .2rem;
+      margin-right: 1rem;
+      font-family: 'Roboto', sans-serif;
+      &:enabled {
+        background-color: ${colors.colorFive};
+        color: white;
+        
+        &:hover {
+          background-color: ${colors.colorSix};
+          color: ${colors.colorFive};
+        }
+      }
+
+      &:disabled {
+        background-color: gray;
+        color: white;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      justify-content: center;
+
+      & button {
+        margin-right: 0;
+        width: 50%;
+        font-weight: 80%;
+      }
+    }
   }
   
 `;
@@ -210,18 +280,22 @@ const Tabs = styled.article`
 const TabSwitcher = styled.div`
   height: 4rem;
   width: 100%;
-  border: 1px solid;
   position: absolute;
   top: 0;
   display: flex;
   align-items: center;
+  background-color: ${colors.colorSeven};
 
   & > span {
     width: 50%;
     height: 100%;
     display: grid;
     place-content: center;
-    border: 1px solid red;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1em;
+    font-family: 'Baloo Chettan 2', cursive;
+    border-radius: 0 0 5px 5px;
   }
 `;
 
@@ -229,22 +303,29 @@ const MovingNav = styled.nav`
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid;
   align-items: center;
   justify-content: flex-start;
+  background-color: transparent;
 
   & > div {
     width: 60%;
     margin: 7% 0;
 
     & > a {
+      font-family: 'Baloo Chettan 2', cursive;
       text-decoration: none;
-      font-size: .8em;
+      font-size: .9em;
+      font-weight: bold;
       margin-left: .3rem;
-      color: red;
+      color: ${colors.colorOne};
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
 
       & > svg {
-        color: gray;
+        color: ${colors.colorFive};
         margin-right: .3rem;
       }
     }
@@ -258,6 +339,7 @@ const MovingNav = styled.nav`
     width: 100%;
     height: 0;
     overflow: hidden;
+    background-color: white;
 
     transition: height 0.5s ease;
 
@@ -268,16 +350,19 @@ const MovingNav = styled.nav`
       padding: 0;      
       &:hover,
       &:active {
-        background-color: blue;
+        background-color: ${colors.colorFour};
+        
       }
       
       & > a {
-        display: inline-block;
+        display: flex;
+        align-items: center;
         width: 100%;
-        height: 100%;
-
-        
-
+        height: 100%;     
+        font-size: 1em;
+        &:hover {
+          text-decoration: none;
+        }
       }
      
 
@@ -286,19 +371,32 @@ const MovingNav = styled.nav`
   }
 
   @media screen and (max-width: 1024px) and (min-width: 751px) {
-    width: 60%;
+    width: 65%;
     height: 100%;
     flex-direction: row;
     justify-content: stretch;
+    border: none;
 
     & > div {
-      width: auto;
-      border: 1px solid;
-      padding: .5rem;
+      width: calc(100% / 6);
+      height: 50%;
 
       & > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
         margin-left: 0;
-        color: magenta;
+        color: white;
+        font-size: 90%;
+        font-weight: bold;
+        &:hover,
+        &:active {
+          background-color: ${colors.colorThree};
+          text-decoration: none;
+          color: ${colors.colorTwo};
+        }
       }
     }
   }

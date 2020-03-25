@@ -17,8 +17,8 @@ export default () => {
   return (
     <TabsContainer>
       <TabSwitcher>
-        <span onClick={handleClick.bind(this, 0)} style={selectedTab == 0 ? { backgroundColor: 'yellow' } : null}>Main Information</span>
-        <span onClick={handleClick.bind(this, 1)} style={selectedTab == 1 ? { backgroundColor: 'yellow' } : null}>Additional Information</span>
+        <span onClick={handleClick.bind(this, 0)} style={selectedTab == 0 ? { backgroundColor: '#B2B7D1', boxShadow: '5px 0px 5px 0px #EDC9E5' } : null}>Main Information</span>
+        <span onClick={handleClick.bind(this, 1)} style={selectedTab == 1 ? { backgroundColor: '#B2B7D1', boxShadow: '-5px 0px 5px 0px #EDC9E5' } : null}>Additional Information</span>
       </TabSwitcher>
       <FormTab selectedTab={selectedTab} />
       <Banner />

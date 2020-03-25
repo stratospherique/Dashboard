@@ -147,7 +147,7 @@ const InfoTab = ({ displayMessage, fadeMessage, displayFailure }) => {
             <div className="input">
               <label htmlFor="first-name">First Name:</label>
               <input type="text" name="firstName" id="first-name" onChange={handleChange}
-                onBlur={validateInput.bind(this, 'firstName')}
+                onBlur={validateInput.bind(this, 'firstName')} placeholder="Type in your First Name"
                 className={firstNameState.touched ? (!firstNameState.valid ? 'wrong' : 'correct') : null} />
               {firstNameState.touched && <FontAwesomeIcon icon={symbols[firstNameState.symIndex]}
                 className={firstNameState.valid ? 'pass' : 'fail'} />}
@@ -164,7 +164,7 @@ const InfoTab = ({ displayMessage, fadeMessage, displayFailure }) => {
             <div className="input">
               <label htmlFor="last-name">Last Name:</label>
               <input type="text" name="lastName" id="last-name" onChange={handleChange}
-                onBlur={validateInput.bind(this, 'lastName')}
+                onBlur={validateInput.bind(this, 'lastName')} placeholder="Type in your Last Name"
                 className={lastNameState.touched ? (!lastNameState.valid ? 'wrong' : 'correct') : null} />
               {lastNameState.touched && <FontAwesomeIcon icon={symbols[lastNameState.symIndex]}
                 className={lastNameState.valid ? 'pass' : 'fail'} />}
@@ -183,7 +183,7 @@ const InfoTab = ({ displayMessage, fadeMessage, displayFailure }) => {
               <select name="country" id="country" onChange={handleChange}
                 onBlur={validateInput.bind(this, 'country')}
                 className={countryState.touched ? (!countryState.valid ? 'wrong' : 'correct') : null}>
-                <option value="" defaultChecked></option>
+                <option value="" defaultChecked>Select Your Country</option>
                 <option value="Germany">Germany</option>
                 <option value="France">France</option>
               </select>
@@ -202,7 +202,7 @@ const InfoTab = ({ displayMessage, fadeMessage, displayFailure }) => {
             <div className="input">
               <label htmlFor="address">Current Address:</label>
               <textarea name="address" id="address" cols="30" rows="2" onChange={handleChange}
-                onBlur={validateInput.bind(this, 'address')}
+                onBlur={validateInput.bind(this, 'address')} placeholder="Type in your Current Address"
                 className={addressState.touched ? (!addressState.valid ? 'wrong' : 'correct') : null} />
               {addressState.touched && <FontAwesomeIcon icon={symbols[addressState.symIndex]}
                 className={addressState.valid ? 'pass' : 'fail'} />}
@@ -228,7 +228,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayMessage: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Coordinates successfully Updated',
+      message: 'Coordinates successfully Updated ✅',
       messageType: 'success'
     })
   },
@@ -240,7 +240,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayFailure: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Oops! Something is wrong with the submitted info',
+      message: 'Oops! Something is wrong with the submitted info ✘',
       messageType: 'error'
     })
   }
