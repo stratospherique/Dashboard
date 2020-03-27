@@ -21,7 +21,6 @@ export default () => {
         <span onClick={handleClick.bind(this, 1)} style={selectedTab == 1 ? { backgroundColor: '#B2B7D1', boxShadow: '-5px 0px 5px 0px #EDC9E5' } : null}>Additional Information</span>
       </TabSwitcher>
       <FormTab selectedTab={selectedTab} />
-      <Banner />
     </TabsContainer>
   )
 }

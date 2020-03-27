@@ -134,7 +134,6 @@ const InfoTab = ({ displayMessage, fadeMessage, displayFailure }) => {
     } else {
       displayFailure();
     }
-    setTimeout(fadeMessage, 4000);
   }
 
 
@@ -228,7 +227,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayMessage: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Coordinates successfully Updated ✅',
+      message: 'Coordinates successfully Updated',
       messageType: 'success'
     })
   },
@@ -240,7 +239,7 @@ const mapDispatchToProps = (dispatch) => ({
   displayFailure: () => {
     dispatch({
       type: DISPLAY_MESSAGE,
-      message: 'Oops! Something is wrong with the submitted info ✘',
+      message: 'Oops! Something is wrong with the submitted info',
       messageType: 'error'
     })
   }

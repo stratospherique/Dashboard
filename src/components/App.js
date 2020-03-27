@@ -6,6 +6,7 @@ import { MainContent, FooterContent, HeaderContent } from './styled/containers';
 import SidePanel from './lateral-panel';
 import FormsPanel from './form-panel';
 import FooterPanel from './footer-panel';
+import Banner from './banner';
 import { DISPLAY_MESSAGE, ERASE_MESSAGE } from './reducers/message-reducer';
 
 
@@ -33,9 +34,6 @@ const App = ({ displayMessage, fadeMessage }) => {
 
   useEffect(() => {
     displayMessage();
-    setTimeout(() => {
-      fadeMessage()
-    }, 5000)
   }, [])
 
 
@@ -47,6 +45,7 @@ const App = ({ displayMessage, fadeMessage }) => {
       <MainContent>
         {state === 'web' ? <aside><SidePanel device={state} /></aside> : null}
         <FormsPanel />
+        <Banner />
       </MainContent>
       <FooterContent>
         <FooterPanel />

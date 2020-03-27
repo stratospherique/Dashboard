@@ -13,7 +13,12 @@ const MainContainer = styled.div`
   min-height: 1000px;
   min-width: 300px;
 
-  background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(225,244,243,1) 100%);
+  @media screen and (max-width: 550px) {
+    grid-template-rows: 4rem 600px 2rem;
+    min-height: 550px;
+  }
+
+  
   
 `;
 
@@ -22,6 +27,9 @@ const MainContent = styled.main`
   display: flex;
   align-items: center;
   height: 100%;
+  position: relative;
+
+  background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(225,244,243,1) 100%);
 
   aside {
     width: 25%;
@@ -32,7 +40,45 @@ const MainContent = styled.main`
     justify-content: center;
   }
 
-  
+  .message {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: .5rem;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      border-radius: 10px;
+      padding: .3rem;
+      span {
+        font-family: 'Baloo Chettan 2', cursive;
+        font-size: 1.3em;
+        text-align: center;
+        color: ${colors.colorFour};
+      }
+      
+      .close {
+        color: orange;
+        cursor: pointer;
+      }
+    }
+
+    .welcome {
+      background-color: ${colors.colorOne};
+    }
+
+    .error {
+      background-color: #DD2E43;
+    }
+
+    .success {
+      background-color: #77B255;
+    }
+
+    
+  }
 `;
 
 const TabsContainer = styled.section`
@@ -54,32 +100,13 @@ const TabsContainer = styled.section`
   flex-direction: column;
   background-color: ${colors.colorThree};
   -webkit-box-shadow: 0px 0px 11px 5px rgba(77,104,240,1);
--moz-box-shadow: 0px 0px 11px 5px rgba(77,104,240,1);
-box-shadow: 0px 0px 11px 5px rgba(77,104,240,1);
+  -moz-box-shadow: 0px 0px 11px 5px rgba(77,104,240,1);
+  box-shadow: 0px 0px 11px 5px rgba(77,104,240,1);
 
-  .message {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    
-    span {
-      font-family: 'Baloo Chettan 2', cursive;
-      font-size: 180%;
-      text-align: center;
-    }
-
-    .welcome {
-      color: ${colors.colorOne};
-    }
-
-    .error {
-      color: #DD2E43;
-    }
-
-    .success {
-      color: #77B255;
-    }
-  }
+@media screen and (max-width: 550px) {
+  height: 500px;
+}
+  
 `;
 
 const FooterContent = styled.footer`
