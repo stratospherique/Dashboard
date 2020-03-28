@@ -3,8 +3,8 @@
 
 # 💻 Dashboard Form (BETA)
 
-![alt text](1-web.png)
-![alt text](1mobile.png)
+![alt text](web.jpg)
+![alt text](mobile.jpg)
 
 - **Dashboard** is a web app that mimics the behaviour and the look & feel of an account dashboard along with validation-enabled forms.
 
