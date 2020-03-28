@@ -1,7 +1,7 @@
 import React from 'react';
 import { MovingNav } from './styled/styledParts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faAddressBook } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faAddressBook, faIndustry, faCog, faNewspaper, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 export default ({ device }) => (
   <MovingNav>
@@ -19,25 +19,25 @@ export default ({ device }) => (
     </div>
     <div>
       <a href="#">
-        {device !== 'tablet' ? <FontAwesomeIcon icon={faAddressBook} /> : null}
+        {device !== 'tablet' ? <FontAwesomeIcon icon={faIndustry} /> : null}
 
         My Company</a>
     </div>
     <div>
       <a href="#">
-        {device !== 'tablet' ? <FontAwesomeIcon icon={faAddressBook} /> : null}
+        {device !== 'tablet' ? <FontAwesomeIcon icon={faCog} /> : null}
 
         My Settings</a>
     </div>
     <div>
       <a href="#">
-        {device !== 'tablet' ? <FontAwesomeIcon icon={faAddressBook} /> : null}
+        {device !== 'tablet' ? <FontAwesomeIcon icon={faNewspaper} /> : null}
 
         News</a>
     </div>
     <div>
       <a href="#">
-        {device !== 'tablet' ? <FontAwesomeIcon icon={faAddressBook} /> : null}
+        {device !== 'tablet' ? <FontAwesomeIcon icon={faChartLine} /> : null}
 
         Analysis</a>
     </div>
