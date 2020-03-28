@@ -20,7 +20,7 @@ ${props => props.source ? `
 
 const NotifContent = ({ className, children, target }) => (
   <div className={className}>
-    {target != "mobile" ? (<>
+    {target !== "mobile" ? (<>
       <div>
         <FontAwesomeIcon icon={faGlobeAmericas} /> <span>EN</span>
       </div>
@@ -102,7 +102,7 @@ const PasswordIndicator = styled(PwdIndicator)`
   }
 
   .active {
-    border-color: ${props => props.level <= 2 ? 'red' : props.level == 4 ? 'green' : 'orange'};
+    border-color: ${props => props.level <= 2 ? 'red' : props.level === 4 ? 'green' : 'orange'};
   }
 
   @media screen and (max-width: 750px) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { MainContainer } from './styled/containers';
 import Header from './header';
@@ -10,14 +10,14 @@ import Banner from './banner';
 import { DISPLAY_MESSAGE, ERASE_MESSAGE } from './reducers/message-reducer';
 
 
-const device = (width) => {
+const device = width => {
   if (width <= 750) return 'mobile';
   if (width > 750 && width < 1025) return 'tablet';
   return 'web';
 }
 
 
-const App = ({ displayMessage, fadeMessage }) => {
+const App = ({ displayMessage }) => {
   const [state, changeTarget] = useState(device(window.innerWidth))
   useEffect(() => {
 
@@ -34,6 +34,7 @@ const App = ({ displayMessage, fadeMessage }) => {
 
   useEffect(() => {
     displayMessage();
+    // eslint-disable-next-line
   }, [])
 
 

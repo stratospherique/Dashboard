@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { ERASE_MESSAGE } from './reducers/message-reducer';
 

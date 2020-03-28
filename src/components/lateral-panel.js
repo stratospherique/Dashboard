@@ -6,37 +6,37 @@ import { faHome, faAddressBook, faIndustry, faCog, faNewspaper, faChartLine } fr
 export default ({ device }) => (
   <MovingNav>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faHome} /> : null}
 
         Home</a>
     </div>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faAddressBook} /> : null}
 
         My Account</a>
     </div>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faIndustry} /> : null}
 
         My Company</a>
     </div>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faCog} /> : null}
 
         My Settings</a>
     </div>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faNewspaper} /> : null}
 
         News</a>
     </div>
     <div>
-      <a href="#">
+      <a href="#root">
         {device !== 'tablet' ? <FontAwesomeIcon icon={faChartLine} /> : null}
 
         Analysis</a>

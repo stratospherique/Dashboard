@@ -1,4 +1,5 @@
 const AjaxCalls = (() => {
+  // eslint-disable-next-line
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const checkEmailFormat = (input) => {
@@ -22,6 +23,7 @@ const AjaxCalls = (() => {
     if (input.match(/[a-z]/)) indicator++;
     if (input.match(/[A-Z]/)) indicator++;
     if (input.match(/[0-9]/)) indicator++;
+    // eslint-disable-next-line
     if (input.match(/[-_.\$\!]/)) indicator++;
     return {
       response: indicator <= 2 ? "weak password" : indicator === 4 ? "Unbreakable Password" : "good password",
