@@ -6,7 +6,7 @@
 ![alt text](web.jpg)
 ![alt text](mobile.jpg)
 
-- **Dashboard** is a web app that mimics the behaviour and the look & feel of an account dashboard along with validation-enabled forms.
+- **Dashboard** is a web app that mimics the behaviour and the look & feel of a dashboard along with validation-enabled forms.
 
 ### Technologies Used
 
@@ -17,19 +17,19 @@ HTML | CSS(SASS) | Javascript | React | Redux
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" width="50" /> | <img src="https://img.icons8.com/windows/64/000000/sass.png"> | <img src="https://img.icons8.com/color/48/000000/javascript.png"> | <img src="https://img.icons8.com/officel/40/000000/react.png"> | <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--heipuOTP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://redux.js.org/img/redux.svg" width="50" />
 
 
-## ✨ Live Demo :hourglass:
+## ✨ Live Demo
 
-You can look at it [here](https://clever-hugle-f515ec.netlify.com/)
+You can look at it [here](https://proto-dashboard.netlify.com/)
 
 ## 🚀 Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-### Clone :hourglass:
+### Clone
 
 ```sh
-git git@github.com:stratospherique/real-estate-app.git
-cd real-estate-app
+git git@github.com:stratospherique/Dashboard.git
+cd dashboard
 ```
 
 ### Install
