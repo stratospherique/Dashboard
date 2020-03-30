@@ -1,4 +1,5 @@
 const AjaxCalls = (() => {
+  // eslint-disable-next-line
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const checkEmailFormat = (input) => {
@@ -10,10 +11,10 @@ const AjaxCalls = (() => {
   }
 
   const checkPassword = (input) => {
-    const res = /([a-z]+[A-Z]{1,}[0-9]{1,}(-_.$!){1,}){8,}/.test(input);
+    const res = input.length < 8;
     return {
-      response: res ? "Invalid Password: Must contain uppercase and numbers" : "valid password",
-      valid: res
+      response: res ? "Password too short (i.e minimum 8 caracters)" : null,
+      valid: !res
     }
   }
 
@@ -22,19 +23,35 @@ const AjaxCalls = (() => {
     if (input.match(/[a-z]/)) indicator++;
     if (input.match(/[A-Z]/)) indicator++;
     if (input.match(/[0-9]/)) indicator++;
-    if (input.match(/(-|_|.|$|!)/)) indicator++;
+    // eslint-disable-next-line
+    if (input.match(/[-_.\$\!]/)) indicator++;
     return {
       response: indicator <= 2 ? "weak password" : indicator === 4 ? "Unbreakable Password" : "good password",
-      valid: indicator <= 2
+      valid: indicator >= 3,
+      indicator
     }
   }
 
-  const checkPasswordConfirmation = (input, password) => input === password;
+  const checkPasswordConfirmation = (password, input) => {
+    const res = input === password;
+    return {
+      response: res ? '' : 'Unmatched Passwords',
+      valid: res
+    }
+  }
 
   const checkInputPresence = (input) => {
     const res = input && input.length > 0
     return {
-      response: res ? "" : "can't be blank",
+      response: res ? null : "can't be blank",
+      valid: res
+    }
+  }
+
+  const checkSelected = (input) => {
+    const res = !!input
+    return {
+      response: res ? null : "Please choose from the list",
       valid: res
     }
   }
@@ -44,7 +61,8 @@ const AjaxCalls = (() => {
     checkPassword,
     checkPasswordConfirmation,
     checkPasswordStrength,
-    checkInputPresence
+    checkInputPresence,
+    checkSelected
   }
 })();
 

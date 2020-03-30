@@ -1,21 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { MainContainer } from './styled/containers';
 import Header from './header';
 import { MainContent, FooterContent, HeaderContent } from './styled/containers';
 import SidePanel from './lateral-panel';
 import FormsPanel from './form-panel';
 import FooterPanel from './footer-panel';
+import Banner from './banner';
+import { DISPLAY_MESSAGE, ERASE_MESSAGE } from './reducers/message-reducer';
 
 
-export default () => {
+const device = width => {
+  if (width <= 750) return 'mobile';
+  if (width > 750 && width < 1025) return 'tablet';
+  return 'web';
+}
+
+
+const App = ({ displayMessage }) => {
+  const [state, changeTarget] = useState(device(window.innerWidth))
+  useEffect(() => {
+
+    window.addEventListener('resize', handleResize);
+
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [state])
+
+  const handleResize = () => {
+    changeTarget(device(window.innerWidth))
+  }
+
+  useEffect(() => {
+    displayMessage();
+    // eslint-disable-next-line
+  }, [])
+
+
   return (
     <MainContainer>
       <HeaderContent>
-        <Header />
+        <Header target={state} />
       </HeaderContent>
       <MainContent>
-        <SidePanel />
+        {state === 'web' ? <aside><SidePanel device={state} /></aside> : null}
         <FormsPanel />
+        <Banner />
       </MainContent>
       <FooterContent>
         <FooterPanel />
@@ -24,4 +55,19 @@ export default () => {
   );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  displayMessage: () => {
+    dispatch({
+      type: DISPLAY_MESSAGE,
+      message: 'Welcome ☺',
+      messageType: 'welcome'
+    })
+  },
+  fadeMessage: () => {
+    dispatch({
+      type: ERASE_MESSAGE,
+    })
+  }
+})
 
+export default connect(null, mapDispatchToProps)(App);
